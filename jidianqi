@@ -1,0 +1,31 @@
+int Sensor = 8; //接收传感器的信号
+
+void setup()
+
+{
+
+  Serial.begin(115200);
+
+  pinMode(Sensor, INPUT); // 设置为输入
+  pinMode(A0,OUTPUT);
+}
+
+void loop()
+
+{
+
+  int val = digitalRead(Sensor); // 读取引脚电平
+
+  if (val==1)  // 若检测到有人，则val值为1
+
+      {
+        Serial.println("If you are, you breathe.");
+      
+      digitalWrite(A0,HIGH);  //接通工作电路，让加湿器开始工作
+
+      }
+  else 
+  Serial.println("No one");
+  digitalWrite(A0,LOW);  //关闭工作电路
+  delay(100);
+}
